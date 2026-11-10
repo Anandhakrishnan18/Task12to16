@@ -76,50 +76,99 @@ function RobotHand({
   useFrame((state) => {
     if (!armRef.current || !elbowRef.current || !wristRef.current) return;
     const t = state.clock.getElapsedTime();
+    const isLeft = basePosition[0] < 0;
+
+    let targetRotX = 0;
+    let targetRotY = 0;
+    let targetRotZ = 0;
+
+    let targetElbowX = 0;
+    let targetElbowZ = 0;
+
+    let targetWristX = 0;
+    let targetWristY = 0;
 
     if (!isActive) {
-      // Parked resting posture
-      armRef.current.rotation.y = THREE.MathUtils.lerp(armRef.current.rotation.y, 0, 0.05);
-      armRef.current.rotation.z = THREE.MathUtils.lerp(armRef.current.rotation.z, 0.35, 0.05);
-      elbowRef.current.rotation.z = THREE.MathUtils.lerp(elbowRef.current.rotation.z, -0.7, 0.05);
-      wristRef.current.rotation.x = THREE.MathUtils.lerp(wristRef.current.rotation.x, 0, 0.05);
-      return;
+      // Parked resting posture at the side
+      targetRotX = 0.2;
+      targetRotY = isLeft ? 0.3 : -0.3;
+      targetRotZ = isLeft ? 0.35 : -0.35;
+      targetElbowX = 0.75;
+      targetWristX = -0.3;
+    } else if (activity === "idle") {
+      // Natural chef ready posture: bended forward toward the food on the table
+      const breathe = Math.sin(t * 1.8) * 0.03;
+      targetRotX = 0.55 + breathe;
+      targetRotY = isLeft ? 0.35 : -0.35;
+      targetRotZ = isLeft ? -0.35 : 0.35;
+      targetElbowX = 0.95 + breathe;
+      targetWristX = -0.5;
+    } else if (activity === "dough") {
+      // Rolling pizza dough: bended deeply forward over the dough board, rolling pin rolling back & forth
+      const roll = Math.sin(t * 8);
+      targetRotX = 0.74 + Math.cos(t * 8) * 0.14;
+      targetRotY = (isLeft ? 0.25 : -0.55) + roll * 0.08;
+      targetRotZ = isLeft ? -0.35 : 0.45;
+      targetElbowX = 1.22 + Math.sin(t * 8) * 0.15;
+      targetWristX = -0.7 - Math.cos(t * 8) * 0.16;
+    } else if (activity === "toppings") {
+      // Chopping toppings on the cutting board: hand bended down with knife chopping rhythmically
+      const chop = Math.abs(Math.sin(t * 12));
+      if (!isLeft) {
+        // Hand 2 directly above the bamboo cutting board
+        targetRotX = 0.76 + chop * 0.08;
+        targetRotY = -0.25 + Math.sin(t * 3) * 0.05;
+        targetRotZ = 0.32;
+        targetElbowX = 1.28 + chop * 0.25;
+        targetWristX = -0.74 - chop * 0.25;
+      } else {
+        // Hand 1 reaching across to the cutting board
+        targetRotX = 0.72 + chop * 0.08;
+        targetRotY = 0.72 + Math.sin(t * 3) * 0.05;
+        targetRotZ = -0.42;
+        targetElbowX = 1.22 + chop * 0.22;
+        targetWristX = -0.7 - chop * 0.22;
+      }
+    } else if (activity === "assemble") {
+      // Assembling pizza: both hands bended inward and forward directly over the pizza crust!
+      const swirl = Math.sin(t * 6);
+      const swirlCos = Math.cos(t * 6);
+      if (isLeft) {
+        // Hand 1 spreading sauce and sprinkling cheese
+        targetRotX = 0.74 + swirlCos * 0.12;
+        targetRotY = 0.58 + swirl * 0.12;
+        targetRotZ = -0.48;
+        targetElbowX = 1.24 + swirl * 0.08;
+        targetWristX = -0.72;
+        targetWristY = t * 4;
+      } else {
+        // Hand 2 stabilizing the pizza base and placing toppings
+        targetRotX = 0.70 + swirlCos * 0.1;
+        targetRotY = -0.55 - swirl * 0.1;
+        targetRotZ = 0.45;
+        targetElbowX = 1.20 - swirl * 0.06;
+        targetWristX = -0.68;
+      }
+    } else if (activity === "bake") {
+      // Guiding pizza into the oven
+      const push = Math.sin(phaseProgress * Math.PI);
+      targetRotX = 0.58 - push * 0.18;
+      targetRotY = (isLeft ? 0.65 : -0.15) + push * 0.25;
+      targetRotZ = isLeft ? -0.38 : 0.25;
+      targetElbowX = 0.95 + push * 0.25;
+      targetWristX = -0.48;
     }
 
-    if (activity === "idle") {
-      // Subtle idle breathing motion
-      armRef.current.rotation.y = THREE.MathUtils.lerp(armRef.current.rotation.y, Math.sin(t * 1.6) * 0.06, 0.1);
-      armRef.current.rotation.z = THREE.MathUtils.lerp(armRef.current.rotation.z, 0.18 + Math.sin(t * 2) * 0.04, 0.1);
-      elbowRef.current.rotation.z = THREE.MathUtils.lerp(elbowRef.current.rotation.z, -0.4, 0.1);
-    } else if (activity === "dough") {
-      // Sweeping back and forth rolling pin motion over dough board
-      const roll = Math.sin(t * 8);
-      armRef.current.rotation.y = THREE.MathUtils.lerp(armRef.current.rotation.y, roll * 0.28 - 0.2, 0.2);
-      armRef.current.rotation.z = THREE.MathUtils.lerp(armRef.current.rotation.z, 0.35 + Math.cos(t * 8) * 0.12, 0.2);
-      elbowRef.current.rotation.z = THREE.MathUtils.lerp(elbowRef.current.rotation.z, -0.58 + roll * 0.14, 0.2);
-      wristRef.current.rotation.x = roll * 0.35;
-    } else if (activity === "toppings") {
-      // Rapid rhythmic chopping motion over cutting board
-      const chop = Math.abs(Math.sin(t * 10));
-      armRef.current.rotation.y = THREE.MathUtils.lerp(armRef.current.rotation.y, 0.36 + Math.sin(t * 2) * 0.08, 0.2);
-      armRef.current.rotation.z = THREE.MathUtils.lerp(armRef.current.rotation.z, 0.26 + chop * 0.22, 0.3);
-      elbowRef.current.rotation.z = THREE.MathUtils.lerp(elbowRef.current.rotation.z, -0.48 - chop * 0.24, 0.3);
-      wristRef.current.rotation.x = chop * 0.45;
-    } else if (activity === "assemble") {
-      // Circular spiral motion spreading sauce and placing cheese
-      const swirlX = Math.sin(t * 6) * 0.28;
-      const swirlZ = Math.cos(t * 6) * 0.18;
-      armRef.current.rotation.y = THREE.MathUtils.lerp(armRef.current.rotation.y, swirlX, 0.2);
-      armRef.current.rotation.z = THREE.MathUtils.lerp(armRef.current.rotation.z, 0.32 + swirlZ * 0.14, 0.2);
-      elbowRef.current.rotation.z = THREE.MathUtils.lerp(elbowRef.current.rotation.z, -0.52, 0.2);
-      wristRef.current.rotation.y = t * 4;
-    } else if (activity === "bake") {
-      // Smooth transfer towards oven
-      const push = Math.sin(phaseProgress * Math.PI);
-      armRef.current.rotation.y = THREE.MathUtils.lerp(armRef.current.rotation.y, 0.65 + push * 0.25, 0.15);
-      armRef.current.rotation.z = THREE.MathUtils.lerp(armRef.current.rotation.z, 0.22 + push * 0.22, 0.15);
-      elbowRef.current.rotation.z = THREE.MathUtils.lerp(elbowRef.current.rotation.z, -0.32 - push * 0.28, 0.15);
-    }
+    // Smooth lerping to natural bended target angles
+    armRef.current.rotation.x = THREE.MathUtils.lerp(armRef.current.rotation.x, targetRotX, 0.18);
+    armRef.current.rotation.y = THREE.MathUtils.lerp(armRef.current.rotation.y, targetRotY, 0.18);
+    armRef.current.rotation.z = THREE.MathUtils.lerp(armRef.current.rotation.z, targetRotZ, 0.18);
+
+    elbowRef.current.rotation.x = THREE.MathUtils.lerp(elbowRef.current.rotation.x, targetElbowX, 0.18);
+    elbowRef.current.rotation.z = THREE.MathUtils.lerp(elbowRef.current.rotation.z, targetElbowZ, 0.18);
+
+    wristRef.current.rotation.x = THREE.MathUtils.lerp(wristRef.current.rotation.x, targetWristX, 0.18);
+    wristRef.current.rotation.y = THREE.MathUtils.lerp(wristRef.current.rotation.y, targetWristY, 0.18);
   });
 
   return (
@@ -836,10 +885,10 @@ export default function RobotParallelismLab() {
     screen === "single_challenge"
       ? `${formatSeconds(singleSimTime)} / 11.0s`
       : screen === "double_challenge"
-      ? `${formatSeconds(doubleSimTime)} / 9.0s`
-      : screen === "results"
-      ? "11.0s vs 9.0s"
-      : "0.0s";
+        ? `${formatSeconds(doubleSimTime)} / 9.0s`
+        : screen === "results"
+          ? "11.0s vs 9.0s"
+          : "0.0s";
 
   // ═════════════════════════════════════════════════════════════════════════════
   // RENDER INTERFACE (STRICT 100% LIGHT THEME & STATIC VIEWPORT)
@@ -847,7 +896,7 @@ export default function RobotParallelismLab() {
 
   return (
     <div className="w-full h-[100dvh] max-h-[100dvh] overflow-hidden select-none flex flex-col bg-gradient-to-b from-[#FFFDF8] via-[#FEF9EE] to-[#F7F2E4] text-slate-800 font-sans">
-      
+
       {/* ── 1. TOP BAR ── */}
       <header className="w-full h-13 px-4 bg-white/95 border-b border-amber-200/90 shadow-xs flex items-center justify-between shrink-0 z-40">
         {/* Left: Back Button, Brand Icon & Game Title */}
@@ -919,12 +968,12 @@ export default function RobotParallelismLab() {
 
       {/* ── 2. CENTRAL 3D PIZZA KITCHEN AREA ── */}
       <main className="relative flex-1 min-h-0 w-full overflow-hidden flex flex-col justify-center items-center">
-        
+
         {/* 3D React Three Fiber Kitchen Canvas */}
         <div className="w-full h-full relative">
           <Canvas
             shadows
-            camera={{ position: [0, 2.3, 5.8], fov: 46 }}
+            camera={{ position: [0, 2.2, 5.5], fov: 44 }}
             style={{ background: "transparent" }}
           >
             <ambientLight intensity={0.9} color="#fffbeb" />
@@ -965,7 +1014,7 @@ export default function RobotParallelismLab() {
             <RobotHand
               color={screen === "single_challenge" ? "#f97316" : "#0284c7"}
               accentColor={screen === "single_challenge" ? "#fdba74" : "#38bdf8"}
-              basePosition={[-1.4, 0, 0.2]}
+              basePosition={[-1.35, 0, -0.05]}
               isActive={screen !== "welcome"}
               activity={screen === "double_challenge" ? doubleInfo.hand1Act : singleInfo.handAct}
               phaseProgress={screen === "double_challenge" ? doubleInfo.hand1Progress : singleSimTime / SINGLE_HAND_TOTAL}
@@ -976,7 +1025,7 @@ export default function RobotParallelismLab() {
               <RobotHand
                 color="#059669"
                 accentColor="#34d399"
-                basePosition={[1.4, 0, 0.2]}
+                basePosition={[1.35, 0, -0.05]}
                 isActive={screen === "double_challenge" || screen === "results"}
                 activity={screen === "double_challenge" ? doubleInfo.hand2Act : "idle"}
                 phaseProgress={screen === "double_challenge" ? doubleInfo.hand2Progress : 0}
@@ -985,7 +1034,7 @@ export default function RobotParallelismLab() {
 
             <OrbitControls
               enableZoom={false}
-              target={[0, 0.75, 0]}
+              target={[0, 0.45, 0.1]}
               maxPolarAngle={Math.PI / 2.1}
               minPolarAngle={Math.PI / 4}
               maxAzimuthAngle={Math.PI / 4}
@@ -1114,7 +1163,7 @@ export default function RobotParallelismLab() {
         {screen === "results" && (
           <div className="absolute inset-0 z-30 bg-amber-950/20 backdrop-blur-xs flex items-center justify-center p-4">
             <Confetti width={width} height={height} recycle={false} numberOfPieces={250} gravity={0.25} />
-            
+
             <div className="max-w-xl w-full bg-white/95 backdrop-blur-md rounded-3xl p-6 shadow-2xl border-4 border-amber-300 text-center flex flex-col items-center animate-in zoom-in-95 duration-200">
               <div className="w-14 h-14 rounded-2xl bg-amber-100 border-2 border-amber-300 flex items-center justify-center text-amber-500 mb-2 shadow-inner">
                 <Sparkles size={32} />
@@ -1195,7 +1244,7 @@ export default function RobotParallelismLab() {
 
       {/* ── 4. BOTTOM AREA: MAIN DYNAMIC ACTION BUTTON & PROGRESS ── */}
       <footer className="w-full h-18 px-4 bg-white/95 border-t border-amber-200/90 shadow-md flex items-center justify-between shrink-0 z-40">
-        
+
         {/* Left: Reset Button */}
         <div className="flex items-center gap-2">
           {(screen === "single_challenge" || screen === "double_challenge") && (
