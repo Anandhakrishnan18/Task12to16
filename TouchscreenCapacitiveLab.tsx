@@ -781,22 +781,22 @@ export default function TouchscreenCapacitiveLab() {
   // ═════════════════════════════════════════════════════════════════════════════
 
   return (
-    <div className="w-full h-[100dvh] max-h-[100dvh] overflow-hidden select-none flex flex-col bg-gradient-to-b from-[#F0FDF4] via-[#F8FAFC] to-[#EFF6FF] text-slate-800 font-sans">
+    <div className="w-full h-[100dvh] max-h-[100dvh] overflow-hidden select-none flex flex-col bg-gradient-to-br from-[#C0C0C0] via-[#D8DCE0] to-[#C0C0C0] text-slate-800 font-sans">
 
-      {/* ── 1. TOP BAR ── */}
-      <header className="w-full h-13 px-4 bg-white/95 border-b border-sky-200/90 shadow-xs flex items-center justify-between shrink-0 z-40">
+      {/* ── 1. TOP BAR (METALLIC SILVER THEME) ── */}
+      <header className="w-full h-13 px-4 bg-[#F8FAFC]/95 border-b border-[#94A3B8] shadow-xs flex items-center justify-between shrink-0 z-40">
         {/* Left: Back Link & Title */}
         <div className="flex items-center gap-3 min-w-0">
           <Link href="/">
             <button
-              className="w-8 h-8 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-900 border border-sky-200 flex items-center justify-center transition cursor-pointer shadow-xs"
+              className="w-8 h-8 rounded-xl bg-[#E5E7EB] hover:bg-[#D1D5DB] text-slate-800 border border-[#94A3B8] flex items-center justify-center transition cursor-pointer shadow-xs"
               title="Back to All Labs"
             >
               <ArrowLeft size={16} strokeWidth={2.4} />
             </button>
           </Link>
 
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-500 p-0.5 shadow-xs flex items-center justify-center text-white">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-slate-600 via-slate-500 to-slate-400 p-0.5 shadow-xs flex items-center justify-center text-white">
             <Smartphone size={18} />
           </div>
 
@@ -804,7 +804,7 @@ export default function TouchscreenCapacitiveLab() {
             <h1 className="text-sm sm:text-base font-black text-slate-900 truncate tracking-tight">
               Touchscreen Magic Challenge
             </h1>
-            <span className="hidden sm:inline-block text-[10px] font-bold text-sky-700 uppercase tracking-wider">
+            <span className="hidden sm:inline-block text-[10px] font-bold text-slate-600 uppercase tracking-wider">
               Discover the Science Behind Capacitive Touchscreens
             </span>
           </div>
@@ -812,10 +812,10 @@ export default function TouchscreenCapacitiveLab() {
 
         {/* Center: Session Timer & Score */}
         <div className="flex items-center gap-2 sm:gap-3">
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-sky-50 border border-sky-200 text-sky-950 shadow-xs">
-            <Compass size={15} className="text-sky-600" />
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[#E5E7EB] border border-[#94A3B8] text-slate-900 shadow-xs">
+            <Compass size={15} className="text-slate-600" />
             <div className="flex flex-col text-left leading-none">
-              <span className="text-[9px] font-black uppercase text-sky-800">SESSION TIME</span>
+              <span className="text-[9px] font-black uppercase text-slate-600">SESSION TIME</span>
               <span className="text-xs font-black font-mono tracking-wider">{formatTimer(sessionSeconds)}</span>
             </div>
           </div>
@@ -836,7 +836,7 @@ export default function TouchscreenCapacitiveLab() {
               triggerSound("pop");
               setSoundEnabled(!soundEnabled);
             }}
-            className="w-8 h-8 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 flex items-center justify-center transition cursor-pointer"
+            className="w-8 h-8 rounded-xl bg-[#E5E7EB] hover:bg-[#D1D5DB] text-slate-700 border border-[#94A3B8] flex items-center justify-center transition cursor-pointer"
             title="Toggle Sound Effects"
           >
             {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
@@ -844,7 +844,7 @@ export default function TouchscreenCapacitiveLab() {
 
           <button
             onClick={handleResetExperiment}
-            className="w-8 h-8 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 flex items-center justify-center transition cursor-pointer"
+            className="w-8 h-8 rounded-xl bg-[#E5E7EB] hover:bg-[#D1D5DB] text-slate-700 border border-[#94A3B8] flex items-center justify-center transition cursor-pointer"
             title="Reset Material Testing"
           >
             <RotateCcw size={16} />
@@ -855,7 +855,7 @@ export default function TouchscreenCapacitiveLab() {
               triggerSound("pop");
               setShowHelp(true);
             }}
-            className="w-8 h-8 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 flex items-center justify-center transition cursor-pointer"
+            className="w-8 h-8 rounded-xl bg-[#E5E7EB] hover:bg-[#D1D5DB] text-slate-700 border border-[#94A3B8] flex items-center justify-center transition cursor-pointer"
             title="Mission Help"
           >
             <HelpCircle size={16} />
@@ -873,10 +873,10 @@ export default function TouchscreenCapacitiveLab() {
           <div className="relative flex-1 min-h-0 w-full flex flex-col md:flex-row gap-3">
 
             {/* ── COLUMN 1 (LEFT): MATERIAL TOOLBOX ── */}
-            <div className="w-full md:w-64 lg:w-72 flex flex-col p-3 rounded-3xl bg-white/95 border-2 border-sky-200 shadow-sm shrink-0 overflow-y-auto justify-between">
+            <div className="w-full md:w-64 lg:w-72 flex flex-col p-3 rounded-3xl bg-[#F8FAFC] border-2 border-[#94A3B8] shadow-sm shrink-0 overflow-y-auto justify-between">
               <div>
-                <div className="flex items-center gap-1.5 border-b border-sky-100 pb-2 mb-2.5">
-                  <Wrench size={16} className="text-sky-600" />
+                <div className="flex items-center gap-1.5 border-b border-[#94A3B8]/30 pb-2 mb-2.5">
+                  <Wrench size={16} className="text-slate-700" />
                   <span className="text-xs font-black uppercase text-slate-900 tracking-wider">
                     Material Toolbox
                   </span>
@@ -899,17 +899,17 @@ export default function TouchscreenCapacitiveLab() {
                         key={`toolbox-${item.id}`}
                         onPointerDown={(e) => handlePointerDown(e, item.id, idx)}
                         className={`p-2.5 rounded-2xl border-2 transition-all flex items-center justify-between select-none ${isCurrent
-                            ? "bg-white border-sky-400 shadow-md ring-2 ring-sky-300 ring-offset-1 cursor-grab active:cursor-grabbing hover:scale-102"
+                            ? "bg-white border-slate-700 shadow-md ring-2 ring-[#94A3B8] ring-offset-1 cursor-grab active:cursor-grabbing hover:scale-102"
                             : isPassed
                               ? "bg-emerald-50 border-emerald-300 opacity-90 cursor-default"
                               : isTested
                                 ? "bg-rose-50/70 border-rose-200 opacity-75 cursor-default"
-                                : "bg-slate-50 border-slate-200 opacity-50 cursor-not-allowed"
+                                : "bg-[#E5E7EB]/50 border-[#94A3B8]/30 opacity-50 cursor-not-allowed"
                           }`}
                         style={{ touchAction: "none" }}
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
-                          <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0">
+                          <div className="w-10 h-10 rounded-xl bg-[#E5E7EB] border border-[#94A3B8]/50 flex items-center justify-center shrink-0">
                             <MaterialVisualIcon id={item.id} size={28} />
                           </div>
                           <div className="min-w-0">
@@ -927,7 +927,7 @@ export default function TouchscreenCapacitiveLab() {
                         {/* Status Icon Indicator */}
                         <div className="shrink-0 pl-1">
                           {isCurrent ? (
-                            <span className="px-2 py-0.5 rounded-full text-[9px] font-black bg-sky-100 text-sky-800 border border-sky-300 animate-pulse">
+                            <span className="px-2 py-0.5 rounded-full text-[9px] font-black bg-slate-800 text-white border border-slate-700 animate-pulse">
                               DRAG ME
                             </span>
                           ) : isPassed ? (
@@ -945,22 +945,26 @@ export default function TouchscreenCapacitiveLab() {
               </div>
 
               {/* Toolbox Guidance Tip */}
-              <div className="mt-3 p-2.5 rounded-2xl bg-sky-50 border border-sky-200 text-[10px] font-bold text-sky-950">
-                💡 <span className="font-black text-sky-900">TIP:</span> Drag one material at a time. Drops outside the tablet do not count!
+              <div className="mt-3 p-2.5 rounded-2xl bg-[#E5E7EB] border border-[#94A3B8] text-[10px] font-bold text-slate-800">
+                💡 <span className="font-black text-slate-900">TIP:</span> Drag one material at a time. Drops outside the tablet do not count!
               </div>
             </div>
 
-            {/* ── COLUMN 2 (CENTRE): 3D TABLET INTERACTION ── */}
-            <div className="relative flex-1 min-h-0 rounded-3xl bg-white/90 border-2 border-sky-200 shadow-sm flex flex-col items-center justify-center p-3 overflow-hidden">
+            {/* ── COLUMN 2 (CENTRE): 3D TABLET INTERACTION (METALLIC SILVER WORKBENCH) ── */}
+            <div className="relative flex-1 min-h-0 rounded-3xl bg-gradient-to-br from-[#E5E7EB] via-[#F8FAFC] to-[#E5E7EB] border-2 border-[#94A3B8] shadow-sm flex flex-col items-center justify-center p-3 overflow-hidden">
 
-              {/* Subtle Grid Canvas Pattern */}
+              {/* Subtle Metallic Silver Sheen & Fine Texture Pattern */}
               <div
                 className="absolute inset-0 pointer-events-none opacity-20"
                 style={{
-                  backgroundImage: "radial-gradient(#0284c7 0.75px, transparent 0.75px)",
-                  backgroundSize: "24px 24px",
+                  backgroundImage: "linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(192,192,192,0.2) 50%, rgba(148,163,184,0.3) 100%), radial-gradient(#94A3B8 0.75px, transparent 0.75px)",
+                  backgroundSize: "100% 100%, 24px 24px",
                 }}
               />
+
+              {/* Ambient Metallic Specular Lighting Accents */}
+              <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-white/40 blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-[#94A3B8]/20 blur-3xl pointer-events-none" />
 
               {/* 3D Tablet Device Shell */}
               <div className="relative w-full max-w-lg aspect-[4/3] rounded-[36px] p-3.5 bg-gradient-to-b from-slate-200 via-slate-100 to-slate-300 shadow-2xl border-4 border-slate-300 flex items-center justify-center transition-transform duration-300">
@@ -970,7 +974,7 @@ export default function TouchscreenCapacitiveLab() {
                   {/* Top Camera Notch */}
                   <div className="w-full h-3.5 flex items-center justify-center mb-1 shrink-0">
                     <div className="w-2.5 h-2.5 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center">
-                      <div className="w-1 h-1 rounded-full bg-sky-950" />
+                      <div className="w-1 h-1 rounded-full bg-slate-950" />
                     </div>
                   </div>
 
@@ -978,7 +982,7 @@ export default function TouchscreenCapacitiveLab() {
                   <div
                     ref={tabletScreenRef}
                     className={`relative flex-1 rounded-[18px] overflow-hidden transition-all duration-300 flex flex-col ${isOverTablet
-                        ? "ring-4 ring-sky-400 ring-offset-2 ring-offset-slate-900 shadow-lg scale-[1.01]"
+                        ? "ring-4 ring-[#94A3B8] ring-offset-2 ring-offset-slate-900 shadow-lg scale-[1.01]"
                         : ""
                       }`}
                   >
@@ -988,7 +992,7 @@ export default function TouchscreenCapacitiveLab() {
                     {/* Touch Ripple Wave Effect when Bare Finger Drops */}
                     {rippleActive && (
                       <div
-                        className="absolute w-44 h-44 rounded-full border-4 border-sky-300 bg-sky-400/30 pointer-events-none animate-ping -translate-x-1/2 -translate-y-1/2 z-30"
+                        className="absolute w-44 h-44 rounded-full border-4 border-slate-300 bg-slate-400/30 pointer-events-none animate-ping -translate-x-1/2 -translate-y-1/2 z-30"
                         style={{ left: `${rippleActive.x}%`, top: `${rippleActive.y}%` }}
                       />
                     )}
@@ -1003,25 +1007,25 @@ export default function TouchscreenCapacitiveLab() {
               </div>
             </div>
 
-            {/* ── COLUMN 3 (RIGHT): LEARNING CONTENT (NO 'FIXED' IN HEADING) ── */}
-            <div className="w-full md:w-72 lg:w-80 flex flex-col justify-between p-3.5 rounded-3xl bg-white/95 border-2 border-sky-200 shadow-sm shrink-0 overflow-y-auto">
+            {/* ── COLUMN 3 (RIGHT): LEARNING CONTENT ── */}
+            <div className="w-full md:w-72 lg:w-80 flex flex-col justify-between p-3.5 rounded-3xl bg-[#F8FAFC] border-2 border-[#94A3B8] shadow-sm shrink-0 overflow-y-auto">
               <div>
-                {/* Header – Note: 'FIXED' word completely removed as requested */}
-                <div className="flex items-center justify-between border-b border-sky-100 pb-2 mb-2.5">
+                {/* Header */}
+                <div className="flex items-center justify-between border-b border-[#94A3B8]/30 pb-2 mb-2.5">
                   <div className="flex items-center gap-1.5">
-                    <Layers size={16} className="text-sky-600" />
+                    <Layers size={16} className="text-slate-700" />
                     <span className="text-xs font-black uppercase text-slate-900 tracking-wider">
                       Material Testing
                     </span>
                   </div>
-                  <span className="text-xs font-black font-mono px-2 py-0.5 rounded-full bg-sky-100 text-sky-900">
+                  <span className="text-xs font-black font-mono px-2 py-0.5 rounded-full bg-[#E5E7EB] text-slate-800 border border-[#94A3B8]/40">
                     Step {currentTestIndex + 1} of 4
                   </span>
                 </div>
 
                 {/* Current Active Material Info */}
-                <div className="p-3 rounded-2xl bg-sky-50/70 border border-sky-200 mb-2.5">
-                  <span className="text-[10px] font-black uppercase text-sky-800 block mb-0.5">
+                <div className="p-3 rounded-2xl bg-[#E5E7EB] border border-[#94A3B8] mb-2.5">
+                  <span className="text-[10px] font-black uppercase text-slate-600 block mb-0.5">
                     CURRENT EXPERIMENT
                   </span>
                   <div className="flex items-center justify-between">
@@ -1065,16 +1069,16 @@ export default function TouchscreenCapacitiveLab() {
                     </p>
                   </div>
                 ) : (
-                  <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-600 leading-relaxed">
-                    <span className="font-bold text-slate-800 block mb-1">How Detection Works:</span>
+                  <div className="p-3 rounded-2xl bg-[#E5E7EB]/70 border border-[#94A3B8]/50 text-xs text-slate-700 leading-relaxed">
+                    <span className="font-bold text-slate-900 block mb-1">How Detection Works:</span>
                     Drag <strong>{MATERIALS[currentTestIndex].name}</strong> onto the tablet. If detected, the 3D activity will unlock and start!
                   </div>
                 )}
               </div>
 
               {/* Scientific Note */}
-              <div className="mt-3 p-2.5 rounded-2xl bg-sky-50/80 border border-sky-200 text-[10px] font-bold text-sky-950 leading-relaxed">
-                💡 <span className="font-black text-sky-900">SCIENTIFIC FACT:</span> Capacitive touchscreens require mobile electrical charges to alter capacitance. Insulators lack free charge carriers!
+              <div className="mt-3 p-2.5 rounded-2xl bg-[#E5E7EB] border border-[#94A3B8] text-[10px] font-bold text-slate-800 leading-relaxed">
+                💡 <span className="font-black text-slate-900">SCIENTIFIC FACT:</span> Capacitive touchscreens require mobile electrical charges to alter capacitance. Insulators lack free charge carriers!
               </div>
             </div>
           </div>
@@ -1087,33 +1091,33 @@ export default function TouchscreenCapacitiveLab() {
           <div className="relative flex-1 min-h-0 w-full flex flex-col md:flex-row gap-3">
 
             {/* ── LEFT: 3D PERSPECTIVE CUTAWAY SIMULATION ── */}
-            <div className="relative flex-1 min-h-0 rounded-3xl bg-white/95 border-2 border-sky-200 shadow-sm flex flex-col items-center justify-between p-3.5 overflow-hidden">
+            <div className="relative flex-1 min-h-0 rounded-3xl bg-[#F8FAFC] border-2 border-[#94A3B8] shadow-sm flex flex-col items-center justify-between p-3.5 overflow-hidden">
 
               {/* Header Info */}
-              <div className="w-full flex items-center justify-between border-b border-sky-100 pb-2 mb-1.5 shrink-0">
+              <div className="w-full flex items-center justify-between border-b border-[#94A3B8]/30 pb-2 mb-1.5 shrink-0">
                 <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-black">
+                  <div className="w-7 h-7 rounded-xl bg-[#E5E7EB] text-slate-700 border border-[#94A3B8]/50 flex items-center justify-center font-black">
                     <Sliders size={16} />
                   </div>
                   <div>
                     <h2 className="text-xs sm:text-sm font-black text-slate-900">
                       3D Touchscreen Cross-Section Simulation
                     </h2>
-                    <span className="text-[10px] font-bold text-sky-700 uppercase">
+                    <span className="text-[10px] font-bold text-slate-600 uppercase">
                       Interactive Microscopic Electrode Grid (Orbit to Inspect in 3D)
                     </span>
                   </div>
                 </div>
 
                 {/* Live Capacitance 3-State Indicator */}
-                <div className="flex items-center gap-2 px-3 py-1 rounded-xl bg-slate-50 border border-slate-200">
-                  <span className="text-[10px] font-black uppercase text-slate-500">Status:</span>
+                <div className="flex items-center gap-2 px-3 py-1 rounded-xl bg-[#E5E7EB] border border-[#94A3B8]">
+                  <span className="text-[10px] font-black uppercase text-slate-600">Status:</span>
                   <span
                     className={`text-xs font-black font-mono ${fingerDistance <= 20
                         ? "text-emerald-600 animate-pulse"
                         : fingerDistance <= 60
                           ? "text-amber-600"
-                          : "text-slate-700"
+                          : "text-slate-800"
                       }`}
                   >
                     {fingerDistance <= 20
@@ -1126,11 +1130,11 @@ export default function TouchscreenCapacitiveLab() {
               </div>
 
               {/* ── 3D THREE.JS PERSPECTIVE CUTAWAY CANVAS ── */}
-              <div className="relative flex-1 w-full min-h-0 rounded-2xl overflow-hidden bg-gradient-to-b from-sky-50/50 via-slate-50 to-white">
+              <div className="relative flex-1 w-full min-h-0 rounded-2xl overflow-hidden bg-gradient-to-b from-[#E5E7EB] via-[#F8FAFC] to-[#E5E7EB] border border-[#94A3B8]/50">
                 <ElectricFieldCutaway3D fingerDistance={fingerDistance} />
 
                 {/* 3D Layer Callouts */}
-                <div className="absolute bottom-2 left-2 pointer-events-none flex flex-col gap-1 text-[9px] font-bold text-slate-600 bg-white/80 p-2 rounded-xl backdrop-blur-xs border border-sky-200">
+                <div className="absolute bottom-2 left-2 pointer-events-none flex flex-col gap-1 text-[9px] font-bold text-slate-700 bg-[#F8FAFC]/90 p-2 rounded-xl backdrop-blur-xs border border-[#94A3B8]">
                   <div className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-sm bg-sky-300" />
                     <span>Layer 1: Protective Tempered Glass</span>
@@ -1147,13 +1151,13 @@ export default function TouchscreenCapacitiveLab() {
               </div>
 
               {/* ── INTERACTIVE FINGER PROXIMITY SLIDER ── */}
-              <div className="w-full max-w-lg mt-2 p-2.5 rounded-2xl bg-sky-50 border border-sky-200 flex flex-col gap-1 shrink-0">
-                <div className="flex items-center justify-between text-xs font-bold text-sky-950">
+              <div className="w-full max-w-lg mt-2 p-2.5 rounded-2xl bg-[#E5E7EB] border border-[#94A3B8] flex flex-col gap-1 shrink-0">
+                <div className="flex items-center justify-between text-xs font-bold text-slate-900">
                   <span className="flex items-center gap-1.5">
-                    <Hand size={14} className="text-sky-600" />
+                    <Hand size={14} className="text-slate-700" />
                     <span>Move Finger Closer to Screen</span>
                   </span>
-                  <span className="font-mono text-sky-800">
+                  <span className="font-mono text-slate-700">
                     {fingerDistance <= 20 ? "Touch Contact (0 mm)" : `${Math.round(fingerDistance / 5)} mm Away`}
                   </span>
                 </div>
@@ -1171,10 +1175,10 @@ export default function TouchscreenCapacitiveLab() {
                       setDiscoveryExplored(true);
                     }
                   }}
-                  className="w-full accent-sky-600 cursor-pointer h-2 bg-sky-200 rounded-lg"
+                  className="w-full accent-slate-700 cursor-pointer h-2 bg-slate-300 rounded-lg"
                 />
 
-                <div className="flex justify-between text-[10px] font-bold text-slate-500">
+                <div className="flex justify-between text-[10px] font-bold text-slate-600">
                   <span>👈 Surface Touch (Detect)</span>
                   <span>Far Away (Baseline) 👉</span>
                 </div>
@@ -1182,17 +1186,17 @@ export default function TouchscreenCapacitiveLab() {
             </div>
 
             {/* ── RIGHT: EDUCATIONAL SCIENCE EXPLORER PANEL ── */}
-            <div className="w-full md:w-80 h-full flex flex-col justify-between p-3.5 rounded-3xl bg-white/95 border-2 border-sky-200 shadow-sm shrink-0 overflow-y-auto">
+            <div className="w-full md:w-80 h-full flex flex-col justify-between p-3.5 rounded-3xl bg-[#F8FAFC] border-2 border-[#94A3B8] shadow-sm shrink-0 overflow-y-auto">
               <div className="space-y-3">
-                <div className="flex items-center gap-1.5 border-b border-sky-100 pb-2">
-                  <Info size={16} className="text-sky-600" />
+                <div className="flex items-center gap-1.5 border-b border-[#94A3B8]/30 pb-2">
+                  <Info size={16} className="text-slate-700" />
                   <span className="text-xs font-black uppercase text-slate-900">
                     How Capacitance Works
                   </span>
                 </div>
 
-                <div className="p-3 rounded-2xl bg-sky-50 border border-sky-200 text-xs text-slate-700 leading-relaxed space-y-2">
-                  <p className="font-bold text-sky-950">
+                <div className="p-3 rounded-2xl bg-[#E5E7EB] border border-[#94A3B8] text-xs text-slate-800 leading-relaxed space-y-2">
+                  <p className="font-bold text-slate-900">
                     Capacitive touchscreens detect changes in capacitance.
                   </p>
                   <p className="text-[11px]">
@@ -1205,15 +1209,15 @@ export default function TouchscreenCapacitiveLab() {
 
                 {/* 3 Physics Interaction States */}
                 <div className="space-y-1.5 text-[11px] font-semibold text-slate-700">
-                  <div className={`p-2 rounded-xl border flex items-center gap-2 ${fingerDistance > 60 ? "bg-sky-100 border-sky-300 font-bold" : "bg-slate-50 border-slate-200"}`}>
-                    <span className="w-5 h-5 rounded-full bg-sky-200 text-sky-900 font-black flex items-center justify-center text-[10px] shrink-0">1</span>
+                  <div className={`p-2 rounded-xl border flex items-center gap-2 ${fingerDistance > 60 ? "bg-[#E5E7EB] border-[#94A3B8] font-bold" : "bg-[#F8FAFC] border-[#94A3B8]/40"}`}>
+                    <span className="w-5 h-5 rounded-full bg-slate-300 text-slate-800 font-black flex items-center justify-center text-[10px] shrink-0">1</span>
                     <span>State 1: Baseline field when finger is far</span>
                   </div>
-                  <div className={`p-2 rounded-xl border flex items-center gap-2 ${fingerDistance > 20 && fingerDistance <= 60 ? "bg-amber-100 border-amber-300 font-bold" : "bg-slate-50 border-slate-200"}`}>
+                  <div className={`p-2 rounded-xl border flex items-center gap-2 ${fingerDistance > 20 && fingerDistance <= 60 ? "bg-amber-100 border-amber-300 font-bold" : "bg-[#F8FAFC] border-[#94A3B8]/40"}`}>
                     <span className="w-5 h-5 rounded-full bg-amber-200 text-amber-900 font-black flex items-center justify-center text-[10px] shrink-0">2</span>
                     <span>State 2: Electric field curves into approaching finger</span>
                   </div>
-                  <div className={`p-2 rounded-xl border flex items-center gap-2 ${fingerDistance <= 20 ? "bg-emerald-100 border-emerald-300 font-bold" : "bg-slate-50 border-slate-200"}`}>
+                  <div className={`p-2 rounded-xl border flex items-center gap-2 ${fingerDistance <= 20 ? "bg-emerald-100 border-emerald-300 font-bold" : "bg-[#F8FAFC] border-[#94A3B8]/40"}`}>
                     <span className="w-5 h-5 rounded-full bg-emerald-200 text-emerald-900 font-black flex items-center justify-center text-[10px] shrink-0">3</span>
                     <span>State 3: Surface touch registers exact location</span>
                   </div>
@@ -1231,30 +1235,30 @@ export default function TouchscreenCapacitiveLab() {
         )}
 
         {/* ═════════════════════════════════════════════════════════════════════
-            OVERLAY: SCREEN 1 – WELCOME
+            OVERLAY: SCREEN 1 – WELCOME (METALLIC SILVER THEME)
             ═════════════════════════════════════════════════════════════════════ */}
         {screen === "welcome" && (
-          <div className="absolute inset-0 z-30 bg-slate-900/25 backdrop-blur-xs flex items-center justify-center p-4">
-            <div className="max-w-lg w-full bg-white/95 backdrop-blur-md rounded-3xl p-6 shadow-2xl border-4 border-sky-300 text-center flex flex-col items-center animate-in zoom-in-95 duration-200">
-              <div className="w-16 h-16 rounded-2xl bg-sky-100 border-2 border-sky-300 flex items-center justify-center text-sky-600 mb-3 shadow-inner">
+          <div className="absolute inset-0 z-30 bg-slate-900/30 backdrop-blur-xs flex items-center justify-center p-4">
+            <div className="max-w-lg w-full bg-[#F8FAFC] rounded-3xl p-6 shadow-2xl border-4 border-[#94A3B8] text-center flex flex-col items-center animate-in zoom-in-95 duration-200">
+              <div className="w-16 h-16 rounded-2xl bg-[#E5E7EB] border-2 border-[#94A3B8] flex items-center justify-center text-slate-700 mb-3 shadow-inner">
                 <Smartphone size={36} />
               </div>
 
               <h2 className="text-2xl font-black text-slate-900 mb-1 leading-tight">
                 Touchscreen Magic Challenge
               </h2>
-              <span className="text-xs font-black text-sky-700 uppercase tracking-widest mb-3">
+              <span className="text-xs font-black text-slate-600 uppercase tracking-widest mb-3">
                 Discover the Science Behind Capacitive Touchscreens
               </span>
 
-              <p className="text-xs sm:text-sm font-semibold text-slate-600 leading-relaxed mb-5 bg-sky-50/70 p-3.5 rounded-2xl border border-sky-200/80">
+              <p className="text-xs sm:text-sm font-semibold text-slate-700 leading-relaxed mb-5 bg-[#E5E7EB] p-3.5 rounded-2xl border border-[#94A3B8]">
                 &ldquo;Your tablet has a special touchscreen! Some materials can activate it, while others cannot. Test four different materials and discover how the touchscreen recognizes your touch.&rdquo;
               </p>
 
               {/* 4 Materials Preview */}
               <div className="grid grid-cols-4 gap-2 w-full mb-6">
                 {MATERIALS.map((m) => (
-                  <div key={m.id} className="p-2 rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center">
+                  <div key={m.id} className="p-2 rounded-xl bg-[#E5E7EB]/80 border border-[#94A3B8] flex flex-col items-center">
                     <MaterialVisualIcon id={m.id} size={28} />
                     <span className="text-[10px] font-bold text-slate-800 mt-1 truncate w-full text-center">
                       {m.name}
@@ -1268,7 +1272,7 @@ export default function TouchscreenCapacitiveLab() {
                   triggerSound("pop");
                   setScreen("testing");
                 }}
-                className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-black text-sm shadow-lg cursor-pointer transition animate-bounce flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-slate-700 to-slate-900 hover:from-slate-800 hover:to-black text-white font-black text-sm shadow-lg cursor-pointer transition animate-bounce flex items-center justify-center gap-2"
               >
                 <span>Start Experiment: Test Materials</span>
                 <ArrowRight size={18} />
@@ -1278,13 +1282,13 @@ export default function TouchscreenCapacitiveLab() {
         )}
 
         {/* ═════════════════════════════════════════════════════════════════════
-            OVERLAY: SCREEN 4 – RESULTS AND SUMMARY
+            OVERLAY: SCREEN 4 – RESULTS AND SUMMARY (METALLIC SILVER THEME)
             ═════════════════════════════════════════════════════════════════════ */}
         {screen === "results" && (
-          <div className="absolute inset-0 z-30 bg-slate-900/25 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="absolute inset-0 z-30 bg-slate-900/30 backdrop-blur-xs flex items-center justify-center p-4">
             <Confetti width={width} height={height} recycle={false} numberOfPieces={250} gravity={0.25} />
 
-            <div className="max-w-xl w-full bg-white/95 backdrop-blur-md rounded-3xl p-6 shadow-2xl border-4 border-sky-300 text-center flex flex-col items-center animate-in zoom-in-95 duration-200">
+            <div className="max-w-xl w-full bg-[#F8FAFC] rounded-3xl p-6 shadow-2xl border-4 border-[#94A3B8] text-center flex flex-col items-center animate-in zoom-in-95 duration-200">
               <div className="w-14 h-14 rounded-2xl bg-emerald-100 border-2 border-emerald-300 flex items-center justify-center text-emerald-600 mb-2 shadow-inner">
                 <Sparkles size={32} />
               </div>
@@ -1298,8 +1302,8 @@ export default function TouchscreenCapacitiveLab() {
 
               {/* 4 Stats Cards */}
               <div className="grid grid-cols-4 gap-2 w-full mb-3 text-center">
-                <div className="p-2 rounded-xl bg-slate-50 border border-slate-200">
-                  <span className="text-[9px] font-black uppercase text-slate-500 block">TESTED</span>
+                <div className="p-2 rounded-xl bg-[#E5E7EB] border border-[#94A3B8]">
+                  <span className="text-[9px] font-black uppercase text-slate-600 block">TESTED</span>
                   <span className="text-lg font-black font-mono text-slate-800">4</span>
                 </div>
                 <div className="p-2 rounded-xl bg-rose-50 border border-rose-200">
@@ -1310,9 +1314,9 @@ export default function TouchscreenCapacitiveLab() {
                   <span className="text-[9px] font-black uppercase text-emerald-600 block">SUCCESS</span>
                   <span className="text-lg font-black font-mono text-emerald-600">1</span>
                 </div>
-                <div className="p-2 rounded-xl bg-sky-50 border border-sky-200">
-                  <span className="text-[9px] font-black uppercase text-sky-600 block">TIME</span>
-                  <span className="text-lg font-black font-mono text-sky-800">{formatTimer(sessionSeconds)}</span>
+                <div className="p-2 rounded-xl bg-[#E5E7EB] border border-[#94A3B8]">
+                  <span className="text-[9px] font-black uppercase text-slate-600 block">TIME</span>
+                  <span className="text-lg font-black font-mono text-slate-800">{formatTimer(sessionSeconds)}</span>
                 </div>
               </div>
 
@@ -1323,7 +1327,7 @@ export default function TouchscreenCapacitiveLab() {
                     key={`res-${m.id}`}
                     className={`p-2.5 rounded-xl border flex items-center justify-between text-xs ${m.conducts
                         ? "bg-emerald-50 border-emerald-300 text-emerald-950 font-bold"
-                        : "bg-slate-50 border-slate-200 text-slate-700"
+                        : "bg-[#E5E7EB] border-[#94A3B8] text-slate-800"
                       }`}
                   >
                     <div className="flex items-center gap-1.5 truncate">
@@ -1331,7 +1335,7 @@ export default function TouchscreenCapacitiveLab() {
                       <span className="truncate">{m.name}</span>
                     </div>
                     <span
-                      className={`text-[9px] font-black px-1.5 py-0.5 rounded ${m.conducts ? "bg-emerald-200 text-emerald-900" : "bg-slate-200 text-slate-700"
+                      className={`text-[9px] font-black px-1.5 py-0.5 rounded ${m.conducts ? "bg-emerald-200 text-emerald-900" : "bg-slate-300 text-slate-800"
                         }`}
                     >
                       {m.conducts ? "DETECTED" : "INSULATOR"}
@@ -1341,8 +1345,8 @@ export default function TouchscreenCapacitiveLab() {
               </div>
 
               {/* Core Learning Principle */}
-              <div className="w-full p-3 rounded-2xl bg-sky-50 border border-sky-300 text-left mb-3 text-xs font-semibold text-sky-950 leading-relaxed">
-                <span className="font-black text-sky-900 block mb-1">💡 KEY COMPUTING & PHYSICS PRINCIPLE:</span>
+              <div className="w-full p-3 rounded-2xl bg-[#E5E7EB] border border-[#94A3B8] text-left mb-3 text-xs font-semibold text-slate-900 leading-relaxed">
+                <span className="font-black text-slate-900 block mb-1">💡 KEY COMPUTING & PHYSICS PRINCIPLE:</span>
                 &ldquo;Capacitive touchscreens work by detecting changes in capacitance. A conductive finger changes the local electric field, allowing the touchscreen controller to identify where the touch occurred.&rdquo;
               </div>
 
@@ -1350,7 +1354,7 @@ export default function TouchscreenCapacitiveLab() {
               <div className="grid grid-cols-2 gap-2 w-full">
                 <button
                   onClick={handleFullReplay}
-                  className="py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-black text-xs shadow-md cursor-pointer transition flex items-center justify-center gap-1.5"
+                  className="py-2.5 rounded-xl bg-slate-700 hover:bg-slate-800 text-white font-black text-xs shadow-md cursor-pointer transition flex items-center justify-center gap-1.5"
                 >
                   <RotateCcw size={14} />
                   <span>Replay Experiment</span>
@@ -1361,7 +1365,7 @@ export default function TouchscreenCapacitiveLab() {
                     triggerSound("pop");
                     setScreen("welcome");
                   }}
-                  className="py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-black text-xs transition flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="py-2.5 rounded-xl bg-[#E5E7EB] hover:bg-slate-300 text-slate-800 font-black text-xs transition flex items-center justify-center gap-1.5 cursor-pointer border border-[#94A3B8]"
                 >
                   <span>Return to Welcome</span>
                 </button>
@@ -1371,12 +1375,12 @@ export default function TouchscreenCapacitiveLab() {
         )}
       </main>
 
-      {/* ── 3. BOTTOM FOOTER: STATUS & PROMINENT NEXT ACTION (NO DUPLICATE TRAY!) ── */}
-      <footer className="w-full h-15 px-4 bg-white/95 border-t border-sky-200 shadow-md flex items-center justify-between shrink-0 z-40">
+      {/* ── 3. BOTTOM FOOTER: STATUS & PROMINENT NEXT ACTION (METALLIC SILVER THEME) ── */}
+      <footer className="w-full h-15 px-4 bg-[#F8FAFC]/95 border-t border-[#94A3B8] shadow-md flex items-center justify-between shrink-0 z-40">
 
         {/* Left: Status Information */}
         <div className="flex items-center gap-2 min-w-0">
-          <div className="w-2.5 h-2.5 rounded-full bg-sky-500 animate-ping" />
+          <div className="w-2.5 h-2.5 rounded-full bg-slate-600 animate-ping" />
           <span className="text-xs font-black text-slate-900 truncate">
             {screen === "testing"
               ? isTabletUnlocked
@@ -1409,7 +1413,7 @@ export default function TouchscreenCapacitiveLab() {
                 triggerSound("pop");
                 setScreen("results");
               }}
-              className="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-black text-xs shadow-lg cursor-pointer transition flex items-center gap-2 animate-bounce"
+              className="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-slate-700 to-slate-900 hover:from-slate-800 hover:to-black text-white font-black text-xs shadow-lg cursor-pointer transition flex items-center gap-2 animate-bounce"
             >
               <span>View Results & Summary</span>
               <Award size={16} />
@@ -1424,7 +1428,7 @@ export default function TouchscreenCapacitiveLab() {
           className="fixed pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 scale-125 drop-shadow-2xl transition-transform"
           style={{ left: `${dragPos.x}px`, top: `${dragPos.y}px` }}
         >
-          <div className="p-3 rounded-2xl bg-white/95 border-2 border-sky-400 shadow-2xl flex items-center gap-2">
+          <div className="p-3 rounded-2xl bg-[#F8FAFC] border-2 border-[#94A3B8] shadow-2xl flex items-center gap-2">
             <MaterialVisualIcon id={draggingId} size={42} />
           </div>
         </div>
@@ -1433,14 +1437,14 @@ export default function TouchscreenCapacitiveLab() {
       {/* ── 5. HELP MODAL ── */}
       {showHelp && (
         <div className="absolute inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in zoom-in-95 duration-150">
-          <div className="max-w-md w-full bg-white rounded-3xl p-6 shadow-2xl border-4 border-sky-300 text-slate-800 flex flex-col gap-3">
-            <div className="flex items-center justify-between border-b border-sky-100 pb-2">
-              <span className="text-xs font-black uppercase tracking-wider text-sky-800">
+          <div className="max-w-md w-full bg-[#F8FAFC] rounded-3xl p-6 shadow-2xl border-4 border-[#94A3B8] text-slate-800 flex flex-col gap-3">
+            <div className="flex items-center justify-between border-b border-[#94A3B8]/30 pb-2">
+              <span className="text-xs font-black uppercase tracking-wider text-slate-800">
                 Touchscreen Magic Mission & Rules
               </span>
               <button
                 onClick={() => setShowHelp(false)}
-                className="w-7 h-7 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center cursor-pointer"
+                className="w-7 h-7 rounded-full bg-[#E5E7EB] text-slate-600 hover:bg-slate-300 flex items-center justify-center cursor-pointer"
               >
                 <X size={15} />
               </button>
@@ -1466,7 +1470,7 @@ export default function TouchscreenCapacitiveLab() {
 
             <button
               onClick={() => setShowHelp(false)}
-              className="w-full py-2.5 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-black text-xs shadow-md cursor-pointer transition"
+              className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-black text-xs shadow-md cursor-pointer transition"
             >
               Got It, Scientist!
             </button>
