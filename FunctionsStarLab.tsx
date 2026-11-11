@@ -336,10 +336,10 @@ export default function FunctionsStarLab() {
   // ═════════════════════════════════════════════════════════════════════════════
 
   return (
-    <div className="w-full h-[100dvh] max-h-[100dvh] overflow-hidden select-none flex flex-col bg-gradient-to-b from-[#FFFDF8] via-[#FEF9EE] to-[#F7F2E4] text-slate-800 font-sans">
+    <div className="w-full h-[100dvh] max-h-[100dvh] overflow-hidden select-none flex flex-col bg-gradient-to-br from-[#EAF5FF] via-[#F7F2FF] to-[#EAE2FF] text-slate-800 font-sans">
       
       {/* ── 1. TOP BAR ── */}
-      <header className="w-full h-13 px-4 bg-white/95 border-b border-amber-200/90 shadow-xs flex items-center justify-between shrink-0 z-40">
+      <header className="w-full h-13 px-4 bg-white/95 border-b border-indigo-100/90 shadow-xs flex items-center justify-between shrink-0 z-40">
         {/* Left: Back Button & Title */}
         <div className="flex items-center gap-3 min-w-0">
           <Link href="/">
@@ -421,22 +421,18 @@ export default function FunctionsStarLab() {
       {/* ── 2. MAIN INTERACTIVE AREA (CANVAS & PANELS) ── */}
       <main className="relative flex-1 min-h-0 w-full overflow-hidden flex flex-col md:flex-row p-3 gap-3">
         
-        {/* ── LEFT/CENTER: LARGE DRAWING CANVAS WORKBENCH ── */}
-        <div className="relative flex-1 min-h-0 h-full rounded-3xl bg-[#FFFDF5] border-2 border-amber-200 shadow-sm overflow-hidden flex items-center justify-center">
+        {/* ── LEFT/CENTER: LARGE DRAWING CANVAS WORKBENCH (LIGHT COSMIC THEME) ── */}
+        <div className="relative flex-1 min-h-0 h-full rounded-3xl bg-gradient-to-br from-[#EAF5FF] via-[#F1E9FF] to-[#DDF3FF] border-2 border-indigo-200/80 shadow-sm overflow-hidden flex items-center justify-center">
           
-          {/* Subtle Blueprint Grid Pattern */}
-          <div
-            className="absolute inset-0 pointer-events-none opacity-20"
-            style={{
-              backgroundImage: "radial-gradient(#d97706 0.75px, transparent 0.75px)",
-              backgroundSize: "20px 20px",
-            }}
-          />
+          {/* Subtle Nebula-Like Light Glow Clouds */}
+          <div className="absolute -top-16 -left-16 w-96 h-96 rounded-full bg-gradient-to-br from-[#DDF3FF] to-[#EAE2FF] opacity-70 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-16 -right-16 w-96 h-96 rounded-full bg-gradient-to-tl from-[#F1E9FF] to-[#DDF3FF] opacity-70 blur-3xl pointer-events-none" />
+          <div className="absolute top-1/3 right-1/4 w-72 h-72 rounded-full bg-gradient-to-tr from-[#F7F2FF] to-[#EAF5FF] opacity-60 blur-2xl pointer-events-none" />
 
           {/* SVG Vector Drawing Canvas (800 x 500 coordinate space) */}
           <svg
             viewBox="0 0 800 500"
-            className="w-full h-full max-h-full object-contain"
+            className="w-full h-full max-h-full object-contain relative z-10"
             preserveAspectRatio="xMidYMid meet"
           >
             <defs>
@@ -450,6 +446,29 @@ export default function FunctionsStarLab() {
                 <feComposite in="SourceGraphic" in2="blur" operator="over" />
               </filter>
             </defs>
+
+            {/* Subtle Cosmic Background Stars & Soft Sparkles */}
+            <g className="pointer-events-none select-none">
+              <circle cx="85" cy="70" r="1.5" fill="#a5b4fc" opacity="0.6" />
+              <circle cx="160" cy="110" r="2" fill="#c084fc" opacity="0.5" />
+              <circle cx="240" cy="65" r="1.2" fill="#93c5fd" opacity="0.7" />
+              <circle cx="680" cy="80" r="1.8" fill="#a5b4fc" opacity="0.6" />
+              <circle cx="730" cy="140" r="1.2" fill="#c084fc" opacity="0.5" />
+              <circle cx="110" cy="380" r="1.8" fill="#93c5fd" opacity="0.6" />
+              <circle cx="190" cy="440" r="1.2" fill="#c084fc" opacity="0.5" />
+              <circle cx="640" cy="420" r="2" fill="#a5b4fc" opacity="0.6" />
+              <circle cx="720" cy="360" r="1.5" fill="#93c5fd" opacity="0.7" />
+              <circle cx="360" cy="40" r="1.5" fill="#c084fc" opacity="0.5" />
+              <circle cx="480" cy="50" r="1.2" fill="#93c5fd" opacity="0.6" />
+              <circle cx="380" cy="460" r="1.5" fill="#a5b4fc" opacity="0.6" />
+              <circle cx="500" cy="440" r="1.2" fill="#c084fc" opacity="0.5" />
+
+              {/* Gentle 4-Point Cosmic Sparkles in outer corners */}
+              <path d="M 120 180 Q 120 190 110 190 Q 120 190 120 200 Q 120 190 130 190 Q 120 190 120 180 Z" fill="#a5b4fc" opacity="0.45" />
+              <path d="M 680 220 Q 680 230 670 230 Q 680 230 680 240 Q 680 230 690 230 Q 680 230 680 220 Z" fill="#c084fc" opacity="0.45" />
+              <path d="M 280 430 Q 280 438 272 438 Q 280 438 280 446 Q 280 438 288 438 Q 280 438 280 430 Z" fill="#93c5fd" opacity="0.4" />
+              <path d="M 580 80 Q 580 88 572 88 Q 580 88 580 96 Q 580 88 588 88 Q 580 88 580 80 Z" fill="#a5b4fc" opacity="0.4" />
+            </g>
 
             {/* ═════════════════════════════════════════════════════════════════
                 CANVAS CONTENT FOR SCREEN 2 (MANUAL STAR DRAWING)
@@ -610,7 +629,7 @@ export default function FunctionsStarLab() {
         </div>
 
         {/* ── RIGHT: INSTRUCTION & CODE FUNCTION WORKBENCH PANEL ── */}
-        <div className="w-full md:w-80 h-full flex flex-col justify-between p-3.5 rounded-3xl bg-white/95 border-2 border-amber-200 shadow-sm shrink-0 overflow-y-auto">
+        <div className="w-full md:w-80 h-full flex flex-col justify-between p-3.5 rounded-3xl bg-white/95 border-2 border-indigo-200/80 shadow-sm shrink-0 overflow-y-auto">
           
           {/* ═════════════════════════════════════════════════════════════════
               SCREEN 2: MANUAL INSTRUCTION LIST (0/10 TO 10/10)
@@ -781,8 +800,8 @@ export default function FunctionsStarLab() {
             OVERLAY: SCREEN 1 – WELCOME
             ═════════════════════════════════════════════════════════════════════ */}
         {screen === "welcome" && (
-          <div className="absolute inset-0 z-30 bg-amber-950/20 backdrop-blur-xs flex items-center justify-center p-4">
-            <div className="max-w-lg w-full bg-white/95 backdrop-blur-md rounded-3xl p-6 shadow-2xl border-4 border-amber-300 text-center flex flex-col items-center animate-in zoom-in-95 duration-200">
+          <div className="absolute inset-0 z-30 bg-indigo-950/15 backdrop-blur-xs flex items-center justify-center p-4">
+            <div className="max-w-lg w-full bg-white/95 backdrop-blur-md rounded-3xl p-6 shadow-2xl border-4 border-indigo-200 text-center flex flex-col items-center animate-in zoom-in-95 duration-200">
               <div className="w-16 h-16 rounded-2xl bg-amber-100 border-2 border-amber-300 flex items-center justify-center text-amber-500 mb-3 shadow-inner">
                 <Star size={36} className="fill-current" />
               </div>
@@ -829,13 +848,13 @@ export default function FunctionsStarLab() {
         )}
 
         {/* ═════════════════════════════════════════════════════════════════════
-            OVERLAY: SCREEN 4 – RESULTS AND SUMMARY
+            OVERLAY: SCREEN 4 – RESULTS AND SUMMARY (LIGHT COSMIC ATMOSPHERE)
             ═════════════════════════════════════════════════════════════════ */}
         {screen === "results" && (
-          <div className="absolute inset-0 z-30 bg-amber-950/20 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="absolute inset-0 z-30 bg-indigo-950/15 backdrop-blur-xs flex items-center justify-center p-4">
             <Confetti width={width} height={height} recycle={false} numberOfPieces={250} gravity={0.25} />
             
-            <div className="max-w-xl w-full bg-white/95 backdrop-blur-md rounded-3xl p-6 shadow-2xl border-4 border-amber-300 text-center flex flex-col items-center animate-in zoom-in-95 duration-200">
+            <div className="max-w-xl w-full bg-white/95 backdrop-blur-md rounded-3xl p-6 shadow-2xl border-4 border-indigo-200 text-center flex flex-col items-center animate-in zoom-in-95 duration-200">
               <div className="w-14 h-14 rounded-2xl bg-amber-100 border-2 border-amber-300 flex items-center justify-center text-amber-500 mb-2 shadow-inner">
                 <Sparkles size={32} />
               </div>
@@ -906,7 +925,7 @@ export default function FunctionsStarLab() {
       </main>
 
       {/* ── 3. BOTTOM AREA: PRIMARY DYNAMIC ACTION BUTTON & PROGRESS ── */}
-      <footer className="w-full h-18 px-4 bg-white/95 border-t border-amber-200/90 shadow-md flex items-center justify-between shrink-0 z-40">
+      <footer className="w-full h-18 px-4 bg-white/95 border-t border-indigo-100/90 shadow-md flex items-center justify-between shrink-0 z-40">
         
         {/* Left: Step / Progress Info */}
         <div className="flex items-center gap-2 min-w-0">
